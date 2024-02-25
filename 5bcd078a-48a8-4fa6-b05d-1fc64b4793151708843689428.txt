@@ -1,0 +1,902 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "🔥 霖溺 Script Hub | Game 🔥",
+   LoadingTitle = "🔥 霖溺🔥",
+   LoadingSubtitle = "by 1_F0",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "霖溺 Hub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Key | 霖溺 Hub",
+      Subtitle = "霖溺系统",
+      Note = "霖溺爱你呦",
+      FileName = "霖溺 Key1", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"wuai005"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local MainTab = Window:CreateTab("🏠 玩家", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+   Title = "认准霖溺脚本",
+   Content = "无",
+   Duration = 3,
+   Image = 13047715178,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Infinite Jump Toggle",
+   Callback = function()
+       --Toggles the infinite jump between on or off on every script run
+_G.infinjump = not _G.infinjump
+
+if _G.infinJumpStarted == nil then
+	--Ensures this only runs once to save resources
+	_G.infinJumpStarted = true
+	
+	--Notifies readiness
+	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+
+	--The actual infinite jump
+	local plr = game:GetService('Players').LocalPlayer
+	local m = plr:GetMouse()
+	m.KeyDown:connect(function(k)
+		if _G.infinjump then
+			if k:byte() == 32 then
+			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+			humanoid:ChangeState('Jumping')
+			wait()
+			humanoid:ChangeState('Seated')
+			end
+		end
+	end)
+end
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "速度调值",
+   Range = {1, 350},
+   Increment = 1,
+   Suffix = "数值",
+   CurrentValue = 16,
+   Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "跳跃调值",
+   Range = {1, 350},
+   Increment = 1,
+   Suffix = "数值",
+   CurrentValue = 16,
+   Flag = "sliderjp", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+   end,
+})
+
+local Dropdown = MainTab:CreateDropdown({
+   Name = "Select Area",
+   Options = {"Starter World","Pirate Island","Pineapple Paradise"},
+   CurrentOption = {"Starter World"},
+   MultipleOptions = false,
+   Flag = "dropdownarea", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Option)
+        print(Option)
+   end,
+})
+
+local Input = MainTab:CreateInput({
+   Name = "Walkspeed",
+   PlaceholderText = "1-500",
+   RemoveTextAfterFocusLost = true,
+   Callback = function(Text)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Text)
+   end,
+})
+
+local OtherSection = MainTab:CreateSection("Other")
+
+local Toggle = MainTab:CreateToggle({
+   Name = "Auto Farm",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        print("FARMING")
+   end,
+})
+
+local TPTab = Window:CreateTab("🎲 力量传奇", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+   Name = "刺客力量传奇",
+   Callback = function()
+        loadstring(game:HttpGet("https://shz.al/~CikeScriptfree"))()
+   end,
+})
+
+local Button2= TPTab:CreateButton({
+   Name = "剑客力量传奇",
+   Callback = function()
+        jianke_V4 = "作者_初夏"jianke__V4 = "作者QQ1412152634"jianke___V4 = "剑客QQ群347724155"loadstring(game:HttpGet(('https://shz.al/~JianKeV4')))()
+   end,
+})
+
+local TPTab = Window:CreateTab("♠ 脚本作者的整合", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+   Name = "林脚本",
+   Callback = function()
+        lin = "作者林"lin ="林QQ群 747623342"loadstring(game:HttpGet("https://raw.githubusercontent.com/linnblin/lin/main/lin"))()
+   end,
+})
+
+local Button2= TPTab:CreateButton({
+   Name = "皇脚本",
+   Callback = function()
+   loadstring(game:HttpGet("https://ayangwp.cn/api/v3/file/get/8577/%E7%9A%87v5.txt?sign=ToDT3Udyh4r3WwDu_yVblRL849qC2GJjjjQ7FTidF_w%3D%3A0"))()
+   end,
+})
+
+local Button3= TPTab:CreateButton({
+   Name = "青脚本",
+   Callback = function()
+   loadstring(game:HttpGet('https://rentry.co/cyq78/raw'))()
+   end,
+})
+
+local Button4= TPTab:CreateButton({
+   Name = "静新脚本",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/jxdjbx/gggggghjjnbb/main/jdjdd"))()
+   end,
+})
+
+local Button5= TPTab:CreateButton({
+   Name = "神罚",
+   Callback = function()
+   SF_V7 = "作者_神罚"SheFa = "QQ群637340150"loadstring(game:HttpGet(('https://raw.githubusercontent.com/WDQi/SF/main/%E7%9C%8B%E4%BD%A0M.txt')))()
+   end,
+})
+
+local Button6= TPTab:CreateButton({
+   Name = "鱼脚本",
+   Callback = function()
+   getgenv().FISH = "鱼脚本群:851686462"loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\101\108\112\71\101\116\40\34\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\72\119\81\77\82\90\68\69\34\41\41\40\41")("鱼脚本")
+   end,
+})
+
+local Button7= TPTab:CreateButton({
+   Name = "初夏",
+   Callback = function()
+   jianke_V4 = "作者_初夏"jianke__V4 = "作者QQ1412152634"jianke___V4 = "剑客QQ群347724155"loadstring(game:HttpGet(('https://shz.al/~JianKeV4')))()
+   end,
+})
+
+local Button= TPTab:CreateButton({
+   Name = "导管中心",
+   Callback = function()
+   loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\117\115\101\114\97\110\101\119\114\102\102\47\114\111\98\108\111\120\45\47\109\97\105\110\47\37\69\54\37\57\68\37\65\49\37\69\54\37\65\67\37\66\69\37\69\53\37\56\68\37\56\70\37\69\56\37\65\69\37\65\69\34\41\41\40\41\10")()
+   end,
+})
+
+local TPTab = Window:CreateTab("♞ 监狱人生", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+   Name = "刺客监狱人生",
+   Callback = function()
+        loadstring(game:HttpGet("https://shz.al/~CikeScriptfree"))()
+   end,
+})
+
+local Button2= TPTab:CreateButton({
+   Name = "请选择林脚本中的青的管理员",
+   Callback = function()
+        lin = "作者林"lin ="林QQ群 747623342"loadstring(game:HttpGet("https://raw.githubusercontent.com/linnblin/lin/main/lin"))()
+   end,
+})
+
+local TPTab = Window:CreateTab("🎲 忍者传奇", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+   Name = "刺客忍者传奇",
+   Callback = function()
+        loadstring(game:HttpGet("https://shz.al/~CikeScriptfree"))()
+   end,
+})
+
+local Button= TPTab:CreateButton({
+   Name = "剑客忍者传奇",
+   Callback = function()
+        jianke_V4 = "作者_初夏"jianke__V4 = "作者QQ1412152634"jianke___V4 = "剑客QQ群347724155"loadstring(game:HttpGet(('https://shz.al/~JianKeV4')))()
+   end,
+})
+
+local TPTab = Window:CreateTab("🎲 极速传奇", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+   Name = "刺客极速传奇",
+   Callback = function()
+        loadstring(game:HttpGet("https://shz.al/~CikeScriptfree"))()
+   end,
+})
+
+local Button1= TPTab:CreateButton({
+   Name = "剑客极速传奇",
+   Callback = function()
+        jianke_V4 = "作者_初夏"jianke__V4 = "作者QQ1412152634"jianke___V4 = "剑客QQ群347724155"loadstring(game:HttpGet(('https://shz.al/~JianKeV4')))()
+   end,
+})
+
+local TPTab = Window:CreateTab("🎲 杀手于警长", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+   Name = "刺客",
+   Callback = function()
+        loadstring(game:HttpGet("https://shz.al/~CikeScriptfree"))()
+   end,
+})
+
+local Button1= TPTab:CreateButton({
+   Name = "剑客",
+   Callback = function()
+        jianke_V4 = "作者_初夏"jianke__V4 = "作者QQ1412152634"jianke___V4 = "剑客QQ群347724155"loadstring(game:HttpGet(('https://shz.al/~JianKeV4')))()
+   end,
+})
+
+local TPTab = Window:CreateTab("通用♥", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+      Name = "使用阿尔宙斯注入器",
+      Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/chillz-workshop/main/Arceus%20X%20V3"))()
+      end
+})
+ 
+ local Button2= TPTab:CreateButton({
+  Name = "骂人无违规",
+  Callback = function()
+    loadstring(game:GetObjects("rbxassetid://1262435912")[1].Source)()
+  end
+})
+local Button3= TPTab:CreateButton({
+	Name = "破坏服务器",
+	Callback = function()
+		loadstring(game:HttpGet('http://pan.rlyun.asia/api/v3/file/get/15949/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A0%B4%E5%9D%8F?sign=Q_VUfUpVSxuE-F-OmONtmyZIHPTIwekar8I6bkpH9zI%3D%3A0'))()
+	end
+})
+local Button4= TPTab:CreateButton({
+  Name = "光影",
+  Default = false,
+  Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
+  end
+})
+
+local Button5= TPTab:CreateButton({
+  Name = "美丽天空",
+  Callback = function()
+    -- Roblox Graphics Enhancher
+    local light = game.Lighting
+    for i, v in pairs(light:GetChildren()) do
+      v:Destroy()
+    end
+
+    local ter = workspace.Terrain
+    local color = Instance.new("ColorCorrectionEffect")
+    local bloom = Instance.new("BloomEffect")
+    local sun = Instance.new("SunRaysEffect")
+    local blur = Inst
+  end
+})
+
+local Button6= TPTab:CreateButton({
+	Name = "超高画质",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/jHBfJYmS"))()
+end
+})    
+
+local Button7= TPTab:CreateButton({
+	Name = "夜视",
+	Default = false,
+	Callback = function(Value)
+		if Value then
+		    game.Lighting.Ambient = Color3.new(1, 1, 1)
+		else
+		    game.Lighting.Ambient = Color3.new(0, 0, 0)
+		end
+	end
+})
+local Button8= TPTab:CreateButton({
+	Name = "透视",
+	Callback = function()
+local esp_settings = { 
+    textsize = 8,
+    colour = 255,255,255
+}
+ 
+local gui = Instance.new("BillboardGui")
+local esp = Instance.new("TextLabel",gui)
+ 
+ 
+ 
+gui.Name = "Cracked esp";
+gui.ResetOnSpawn = false
+gui.AlwaysOnTop = true;
+gui.LightInfluence = 0;
+gui.Size = UDim2.new(1.75, 0, 1.75, 0);
+esp.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+esp.Text = ""
+esp.Size = UDim2.new(0.0001, 0.00001, 0.0001, 0.00001);
+esp.BorderSizePixel = 4;
+esp.BorderColor3 = Color3.new(esp_settings.colour)
+esp.BorderSizePixel = 0
+esp.Font = "GothamSemibold"
+esp.TextSize = esp_settings.textsize
+esp.TextColor3 = Color3.fromRGB(esp_settings.colour) -- text colour
+ 
+game:GetService("RunService").RenderStepped:Connect(function()
+    for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+        if v ~= game:GetService("Players").LocalPlayer and v.Character.Head:FindFirstChild("Cracked esp")==nil  then
+            esp.Text = "{"..v.Name.."}"
+            gui:Clone().Parent = v.Character.Head
+    end
+end
+end)
+   end
+})
+local Button9= TPTab:CreateButton({
+	Name = "飞车",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/MHE1cbWF"))()
+	end
+})
+
+local Button10= TPTab:CreateButton({
+	Name = "锁定屏幕",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/Uibs9vTq"))()
+end
+})
+
+local Button11= TPTab:CreateButton({
+	Name = "电脑键盘",
+	Callback = function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
+  	end    
+})
+
+local Button12= TPTab:CreateButton({
+  Name = "黄",
+  Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tescalus/Pendulum-Hubs-Source/main/Pendulum%20Hub%20V5.lua"))()
+  end
+})
+
+local Button13= TPTab:CreateButton({  
+    Name = "指令1",
+	Callback = function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+	end
+})
+
+local Button14= TPTab:CreateButton({
+  Name = "指令2",
+  Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))();
+  end
+})
+
+local Button15= TPTab:CreateButton({
+	Name = "踏空行走",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Float'))()
+	end
+})
+
+local Button16= TPTab:CreateButton({
+	Name = "防止掉线（反挂机）",
+	Callback = function()
+	print("Anti Afk On")
+		local vu = game:GetService("VirtualUser")
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+		   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		   wait(1)
+		   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		end)
+  	end
+})
+
+local Button17= TPTab:CreateButton({
+	Name = "反挂机2",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/9fFu43FF"))()
+  	end    
+})
+
+local Button18= TPTab:CreateButton({  
+    Name = "FPS助推",
+	Callback = function()
+	--[[ Subscribe to Zaptosis on YouTube for more awesome scripts!
+ 
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+███▀▀▀███░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░
+█▀░░░███░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+▀░░░███░░▄█▀██▄░▀████████▄██████░░▄██▀██▄░▄██▀██████░░▄██▀███
+░░░███░░██░░░██░░░██░░░▀██░░██░░░██▀░░░▀████░░░▀▀░██░░██░░░▀▀
+░░███░░░▄▄█████░░░██░░░░██░░██░░░██░░░░░██▀█████▄░██░░▀█████▄
+░███░░░▄██░░░██░░░██░░░▄██░░██░░░██▄░░░▄███▄░░░██░██░░█▄░░░██
+█████████████▀██▄░██████▀░░░▀████░▀█████▀░██████▀████▄██████▀
+░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░▄████▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+]]
+_G.Settings = {
+    Players = {
+        ["Ignore Me"] = true, -- Ignore your Character
+        ["Ignore Others"] = true-- Ignore other Characters
+    },
+    Meshes = {
+        Destroy = false, -- Destroy Meshes
+        LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
+    },
+    Images = {
+        Invisible = true, -- Invisible Images
+        LowDetail = false, -- Low detail images (NOT SURE IT DOES ANYTHING)
+        Destroy = false, -- Destroy Images
+    },
+    ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
+    ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
+    ["No Explosions"] = true, -- Makes Explosion's invisible
+    ["No Clothes"] = true, -- Removes Clothing from the game
+    ["Low Water Graphics"] = true, -- Removes Water Quality
+    ["No Shadows"] = true, -- Remove Shadows
+    ["Low Rendering"] = true, -- Lower Rendering
+    ["Low Quality Parts"] = true -- Lower quality parts
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
+     end
+})
+
+local Button19= TPTab:CreateButton({
+    Name = "子弹追踪",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/8GhR79DA"))()
+   end
+})
+
+local Button20= TPTab:CreateButton({  
+    Name = "范围(全游戏通用)",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/dMiziBzT"))()
+	end
+})
+
+local Button21= TPTab:CreateButton({
+    Name = "无限跳",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
+	end
+})
+
+local Button22= TPTab:CreateButton({  
+    Name = "画质脚本",
+	Callback = function()
+	loadstring(game:HttpGet(('https://pastefy.app/xXkUxA0P/raw'),true))()
+	end
+})
+
+local Button23= TPTab:CreateButton({  
+    Name = "飞行",
+	Callback = function()
+	loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\90\66\122\99\84\109\49\102\34\41\41\40\41\10")()
+	end
+})
+
+local TPTab = Window:CreateTab("刀刃球♛", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+   Name = "功能多版本",
+   Callback = function()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Slap%20Battles")))()
+   end,
+})
+
+local Button2= TPTab:CreateButton({
+   Name = "常用功能",
+   Callback = function()
+   loadstring(game:HttpGet("https://lkhub.net/s/loader.lua"))()
+   end,
+})
+
+local Button3= TPTab:CreateButton({
+   Name = "自动刷巴掌",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Slap%20Farm'))()
+   end,
+})
+
+local Button4= TPTab:CreateButton({
+   Name = "听说是最牛的刀刃球脚本",
+   Callback = function()
+   loadstring(game:HttpGet(('https://raw.githubusercontent.com/Unknownkellymc1/Unknownscripts/main/slap-battles')))()
+   end,
+})
+
+local TPTab = Window:CreateTab("模仿者♝", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "模仿者",
+	Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ttjy9808/obfloadstringmainmimic/main/README.md", true))()
+    end
+
+})
+
+local TPTab = Window:CreateTab("战斗勇士♬", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "战斗勇士",
+	Callback = function()
+	loadstring(game:HttpGet("https://projecthook.xyz/scripts/free.lua"))()
+    end
+
+})
+
+local Button2= TPTab:CreateButton({
+	Name = "战斗勇士英文",
+	Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/frkfx/Combat-Warriors/main/Script"))()
+    end,
+
+})
+
+local TPTab = Window:CreateTab("火箭发射模拟器🚀", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "火箭🚀",
+	Callback = function()
+    loadstring(game:HttpGet("https://ayangwp.cn/api/v3/file/get/9245/%E7%8C%AB%E9%80%9A%E7%94%A8.txt?sign=hrWROZdVfK2mtJcIFa3Tvbl-TojP1C86_Zd3q03qttc%3D%3A0"))()
+    end,
+
+})
+
+local TPTab = Window:CreateTab("只因剑●", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "只因剑",
+	Callback = function()
+    loadstring(game:HttpGet(('https://gist.githubusercontent.com/blox-hub-roblox/021bad62bbc6a0adc4ba4e625f9ad7df/raw/c89af6e1acf587d09e4ce4bc7510e7100e0c0065/swordWarrior.lua'),true))()
+    end,
+
+})
+
+local TPTab = Window:CreateTab("♠ 彩虹朋友", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "彩虹朋友",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/XoNv04vR/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("● 河北唐县", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "河北唐县",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/s20nni0h/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("■Blox Fruit", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "Blox fruit",
+	Callback = function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/BloxFruits/main/redz9999"))()
+	end
+})
+
+local TPTab = Window:CreateTab("₩蜂群模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "蜂群模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/QtYmKaQ1/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("一路向西♝", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "一路向西",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/q08owYGG/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 造船寻宝", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "造般寻宝",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/hvV1c4nO/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ Doors", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "doors",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/Su9RsViT/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 俄亥俄州", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "俄亥俄州",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/QbXPfsgC/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 兵工厂", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "兵工厂",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/2YdrWHxV/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 餐厅大亨2", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "餐厅大亨2",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/Ppqt0Gib/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 超级大力士模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "超级大力士模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/aO18ZEB9/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 举重模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "举重模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/KSriAk53/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 汽车大亨", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "汽车经销大亨",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/5o594Q0i/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 幸运方块", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "幸运方块",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/eAWNSTyw/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 怪兽宇宙", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "怪兽宇宙",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/oRWEIEcJ/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 寻宝模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+    Name = "寻宝模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/1vYhZHYV/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 汽车模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "汽车破坏模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/Om4KpJOw/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 拳击模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "拳击模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/T4O1SA3q/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 伐木大亨2", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "伐木大亨2",
+	Callback = function()
+	loadstring(game:HttpGet("https://shz.al/~/dkfkfkfjfkfjdj/longshu/main/lllllkllllllll"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 最强战场", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "最强战场",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/Z4K7VMY9/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 格林维尔", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "格林维尔",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/WBYAsWJm/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠奎尔湖 ", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "奎尔湖",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/ZwaXa3ZR/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 伐木工模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "伐木工模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/LdrWbqdB/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 恐怖奶奶", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "恐怖奶奶透视",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/o688Jvmn/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 奶酪逃亡", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "奶酪逃亡",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/IIpzN8f5/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 我的餐厅", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "我的餐厅",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/5R1Ch6kk/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 钓鱼模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "钓鱼模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/aJYgKcb3/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 旗帜战争", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "旗帜战争",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/otEg6PJV/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ UGC", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "hatch for UGC",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/akcrRZo7/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 法宝模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "法宝模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/9bGpv4H3/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 极速奔驰", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "急速奔驰",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/Y7607jwb/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 射击光束模拟器", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "射击光束模拟器",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/51yMuaCc/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 合并滴管", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "合并滴管",
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/NpBrBCqM/raw"))()
+	end
+})
+
+local TPTab = Window:CreateTab("♠ 动感星期五", nil) -- Title, Image
+
+local Button1= TPTab:CreateButton({
+	Name = "动感星期五",
+	Callback = function()
+	loadstring(game:HttpGet("https://scriptblox.com/raw/XMAS-Event-or-Funky-Friday-Auto-Player-Mobile-6721"))()
+	end
+})
